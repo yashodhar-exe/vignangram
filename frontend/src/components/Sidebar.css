@@ -1,0 +1,61 @@
+.sidebar {
+    width: 80px;
+    border-right: 1px solid #262626;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: #000;
+}
+
+.sidebar-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.sidebar nav img,
+.menu-button img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.sidebar nav img:hover,
+.menu-button img:hover {
+    transform: scale(1.1);
+}
+
+.message-icon-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unread-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #0095f6; /* Blue dot as requested */
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.sidebar-dot {
+    top: -2px;
+    right: -2px;
+}

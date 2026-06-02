@@ -1,0 +1,125 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+    font-family:'Roboto',sans-serif;
+    font-weight:400;
+}
+
+body{
+    background:#000;
+    color:white;
+}
+
+.login-page{
+    min-height:100vh;
+
+    background:#000;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-container{
+    width:420px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.login-logo{
+    width:70px;
+    height:auto;
+
+    margin-bottom:35px;
+}
+
+.login-input{
+    width:420px;
+    height:54px;
+
+    background:#121212;
+
+    border:1px solid #262626;
+    border-radius:14px;
+
+    padding:0 18px;
+
+    color:white;
+
+    font-size:14px;
+
+    outline:none;
+
+    margin-bottom:14px;
+}
+
+.login-input::placeholder{
+    color:#8e8e8e;
+}
+
+.login-btn{
+    width:420px;
+    height:48px;
+
+    border:none;
+
+    border-radius:24px;
+
+    background:#1877f2;
+
+    color:white;
+
+    font-size:14px;
+    font-weight:400;
+
+    margin-top:10px;
+    margin-bottom:35px;
+
+    cursor:pointer;
+}
+
+.login-btn:hover{
+    opacity:.95;
+}
+
+.forgot-password{
+    color:white;
+
+    font-size:13px;
+    font-weight:400;
+
+    margin-bottom:28px;
+
+    cursor:pointer;
+}
+
+.create-account-btn{
+    width:420px;
+    height:48px;
+
+    background:transparent;
+
+    border:1px solid #1877f2;
+
+    border-radius:24px;
+
+    color:#1877f2;
+
+    font-size:14px;
+    font-weight:400;
+
+    cursor:pointer;
+}
+
+.create-account-btn:hover{
+    background:
+    rgba(24,119,242,.08);
+}
+
+.login-container{
+    transform: scale(1.15);
+}
