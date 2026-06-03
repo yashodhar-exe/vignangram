@@ -83,13 +83,11 @@ function UploadPost() {
         }
     };
 
+    if (!user) return <div className="home-page" style={{color: 'white', padding: '40px'}}>Loading User...</div>;
+
     return (
         <div className="home-page">
             <Sidebar />
-
-            {!user ? (
-                <main className="upload-layout"></main>
-            ) : (
 
             <main className="upload-layout">
                 <div className="upload-container">
@@ -131,7 +129,6 @@ function UploadPost() {
                     </button>
                 </div>
             </main>
-            )}
         </div>
     );
 }
