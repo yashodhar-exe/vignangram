@@ -119,12 +119,10 @@
 
 .chat-bubble-container.me {
     align-self: flex-end;
-    align-items: flex-end;
 }
 
 .chat-bubble-container.other {
     align-self: flex-start;
-    align-items: flex-start;
 }
 
 .sender-name {
@@ -147,11 +145,13 @@
 .chat-bubble.other {
     background: #262626;
     border-bottom-left-radius: 4px;
+    margin-right: auto;
 }
 
 .chat-bubble.me {
     background: #1877f2;
     border-bottom-right-radius: 4px;
+    margin-left: auto;
 }
 
 .chat-input-container {
