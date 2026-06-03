@@ -100,10 +100,18 @@ def register(
 
     db.commit()
 
-    send_otp_email(
-        request.email,
-        otp
-    )
+    try:
+        send_otp_email(
+            request.email,
+            otp
+        )
+    except Exception as e:
+        db.query(OTP).filter(OTP.email == request.email).delete()
+        db.commit()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to send email: {str(e)}"
+        )
 
     return {
         "message":
