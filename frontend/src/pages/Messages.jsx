@@ -22,6 +22,7 @@ function Messages() {
     const [messages, setMessages] = useState([]);
     const [messageText, setMessageText] = useState("");
     const fileInputRef = useRef(null);
+    const messagesEndRef = useRef(null);
 
     // Fetch user and contacts on mount
     useEffect(() => {
@@ -38,15 +39,29 @@ function Messages() {
         }
     }
 
-    // Fetch messages when active contact changes
+    // Fetch messages and start polling when active contact changes
     useEffect(() => {
+        let interval;
         if (activeContact) {
             fetchMessages(activeContact.id);
+            interval = setInterval(() => {
+                fetchMessages(activeContact.id);
+            }, 3000);
         } else {
-            // eslint-disable-next-line react-hooks/set-state-in-effect
             setMessages([]);
         }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
     }, [activeContact]);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages.length]);
 
     async function fetchContacts() {
         try {
@@ -60,7 +75,12 @@ function Messages() {
     async function fetchMessages(otherUserId) {
         try {
             const res = await api.get(`/messages/${otherUserId}`);
-            setMessages(res.data);
+            setMessages(prev => {
+                if (prev.length > 0 && res.data.length > 0 && prev.length === res.data.length && prev[prev.length-1].id === res.data[res.data.length-1].id) {
+                    return prev;
+                }
+                return res.data;
+            });
         } catch (error) {
             console.error("Error fetching messages:", error);
         }
@@ -151,6 +171,7 @@ function Messages() {
                                         </div>
                                     );
                                 })}
+                                <div ref={messagesEndRef} />
                             </div>
 
                             <div className="chat-input-container">

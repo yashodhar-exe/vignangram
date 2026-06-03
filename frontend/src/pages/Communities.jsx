@@ -14,6 +14,7 @@ function Communities() {
     const [messages, setMessages] = useState([]);
     const [messageText, setMessageText] = useState("");
     const fileInputRef = useRef(null);
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
         fetchCurrentUser();
@@ -30,13 +31,28 @@ function Communities() {
     }
 
     useEffect(() => {
+        let interval;
         if (activeCommunity) {
             fetchMessages(activeCommunity.id);
             markCommunityRead(activeCommunity.id);
+            interval = setInterval(() => {
+                fetchMessages(activeCommunity.id);
+            }, 3000);
         } else {
             setMessages([]);
         }
+        return () => {
+            if (interval) clearInterval(interval);
+        };
     }, [activeCommunity]);
+
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    };
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages.length]);
 
     async function markCommunityRead(communityId) {
         try {
@@ -59,7 +75,12 @@ function Communities() {
     async function fetchMessages(communityId) {
         try {
             const res = await api.get(`/communities/${communityId}/messages`);
-            setMessages(res.data);
+            setMessages(prev => {
+                if (prev.length > 0 && res.data.length > 0 && prev.length === res.data.length && prev[prev.length-1].id === res.data[res.data.length-1].id) {
+                    return prev;
+                }
+                return res.data;
+            });
         } catch (error) {
             console.error("Error fetching messages:", error);
         }
@@ -166,6 +187,7 @@ function Communities() {
                                         </div>
                                     );
                                 })}
+                                <div ref={messagesEndRef} />
                             </div>
 
                             <div className="chat-input-container">
