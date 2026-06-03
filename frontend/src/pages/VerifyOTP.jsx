@@ -60,6 +60,7 @@ function VerifyOTP() {
                 onChange={(e) =>
                     setOtp(e.target.value)
                 }
+                onKeyDown={(e) => e.key === 'Enter' && verify()}
             />
 
             <button onClick={verify}>

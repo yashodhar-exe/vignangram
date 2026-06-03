@@ -188,6 +188,13 @@ const genderOptions = [
 
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            if (!otpSent) sendOTP();
+            else verifyAndSubmit();
+        }
+    };
+
     const checkUsername =
         async (username) => {
 
@@ -296,6 +303,7 @@ const genderOptions = [
                     name="name"
                     placeholder="Full Name"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
 
                 <input
@@ -311,6 +319,7 @@ const genderOptions = [
                         );
 
                     }}
+                    onKeyDown={handleKeyDown}
                 />
 
                 {usernameAvailable === true && (
@@ -337,12 +346,14 @@ const genderOptions = [
                     name="roll_number"
                     placeholder="Roll Number"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
 
                 <input
                     name="email"
                     placeholder="College Email"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
 
                 <input
@@ -350,6 +361,7 @@ const genderOptions = [
                     name="password"
                     placeholder="Password"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
 
                 <input
@@ -357,6 +369,7 @@ const genderOptions = [
                     name="confirm_password"
                     placeholder="Confirm Password"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
 
                 <label>
@@ -434,6 +447,7 @@ const genderOptions = [
                     name="section"
                     placeholder="Section"
                     onChange={handleChange}
+                    onKeyDown={handleKeyDown}
                 />
 
                 <Select
@@ -457,6 +471,7 @@ const genderOptions = [
                             placeholder="Enter OTP"
                             value={otp}
                             onChange={(e) => setOtp(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                         <button onClick={verifyAndSubmit}>Verify & Submit</button>
                     </>

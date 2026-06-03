@@ -182,6 +182,7 @@ function Profile() {
                             className="modal-input" 
                             value={editName}
                             onChange={(e) => setEditName(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSaveProfile()}
                         />
 
                         <label>Bio</label>

@@ -216,6 +216,7 @@ function PostCard({ post }) {
                             e.target.value
                         )
                     }
+                    onKeyDown={(e) => e.key === 'Enter' && addComment()}
                     style={{
                         flex: 1
                     }}

@@ -46,6 +46,7 @@ function ForgotPassword() {
                             placeholder="Email Address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && sendOTP()}
                         />
                         <p className="forgot-message">
                             You will receive a OTP to your registered email address for verification.
@@ -63,12 +64,14 @@ function ForgotPassword() {
                             placeholder="OTP Code"
                             value={otp}
                             onChange={(e) => setOtp(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && resetPassword()}
                         />
                         <input
                             type="password"
                             placeholder="New Password"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && resetPassword()}
                         />
                         <button onClick={resetPassword}>Update Password</button>
                     </>

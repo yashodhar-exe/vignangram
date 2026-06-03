@@ -50,9 +50,9 @@ function Login() {
                     className="login-logo"
                 />
 
-                <input type="text" placeholder="Email Address or Username" value={email} onChange={(e) => setEmail(e.target.value)} className="login-input" />
+                <input type="text" placeholder="Email Address or Username" value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && login()} className="login-input" />
 
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="login-input" />
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && login()} className="login-input" />
 
                 <button
                     onClick={login}
