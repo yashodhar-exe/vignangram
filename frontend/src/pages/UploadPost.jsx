@@ -83,7 +83,7 @@ function UploadPost() {
         }
     };
 
-    if (!user) return <div className="home-page" style={{color: 'white', padding: '40px'}}>Loading User...</div>;
+
 
     return (
         <div className="home-page">

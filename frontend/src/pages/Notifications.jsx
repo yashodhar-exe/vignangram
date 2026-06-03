@@ -39,8 +39,7 @@ function Notifications() {
 
     }, [user]);
 
-    if (!user)
-        return <h1>Loading User...</h1>;
+
 
     return (
 
