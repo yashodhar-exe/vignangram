@@ -18,6 +18,8 @@ import NotFound from "../pages/NotFound";
 import ForgotPassword from "../pages/ForgotPassword";
 import Messages from "../pages/Messages";
 import Communities from "../pages/Communities";
+import Gallery from "../pages/Gallery";
+import GalleryFolder from "../pages/GalleryFolder";
 
 function AppRoutes() {
 
@@ -110,6 +112,24 @@ function AppRoutes() {
                     element={
                         <ProtectedRoute>
                             <Communities />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/gallery"
+                    element={
+                        <ProtectedRoute>
+                            <Gallery />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/gallery/:folderId"
+                    element={
+                        <ProtectedRoute>
+                            <GalleryFolder />
                         </ProtectedRoute>
                     }
                 />

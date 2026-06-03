@@ -10,6 +10,7 @@ import messageIcon from "../assets/message.png";
 import notificationIcon from "../assets/notification.png";
 import profileIcon from "../assets/profile.png";
 import communitiesIcon from "../assets/communties.png";
+import galleryIcon from "../assets/gallery.png";
 import logoutIcon from "../assets/logout.png";
 
 import "./Sidebar.css";
@@ -67,6 +68,9 @@ function Sidebar() {
                 <Link to="/communities" className="message-icon-wrapper">
                     <img src={communitiesIcon} alt="Communities" />
                     {unreadCommCount > 0 && <span className="unread-dot sidebar-dot"></span>}
+                </Link>
+                <Link to="/gallery">
+                    <img src={galleryIcon} alt="Gallery" />
                 </Link>
                 <Link to="/profile"><img src={profileIcon} alt="" /></Link>
             </nav>
