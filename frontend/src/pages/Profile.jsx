@@ -34,6 +34,7 @@ function Profile() {
     }, [id]);
 
     async function fetchProfileData() {
+        window.dispatchEvent(new Event('show-loader'));
         try {
             let targetUserId = id;
             let isOwnProfile = false;
@@ -63,6 +64,8 @@ function Profile() {
             }
         } catch (error) {
             console.error("Error fetching profile:", error);
+        } finally {
+            window.dispatchEvent(new Event('hide-loader'));
         }
     }
 
@@ -116,7 +119,7 @@ function Profile() {
         return `${API_BASE_URL}${url}`;
     };
 
-    if (!profile) return <div className="home-page" style={{color: 'white', padding: '40px'}}>Loading Profile...</div>;
+    if (!profile) return <div className="home-page"></div>;
 
     return (
         <div className="home-page">
