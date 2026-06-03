@@ -115,15 +115,16 @@
     display: flex;
     flex-direction: column;
     max-width: 60%;
-    width: max-content;
 }
 
 .chat-bubble-container.me {
     align-self: flex-end;
+    align-items: flex-end;
 }
 
 .chat-bubble-container.other {
     align-self: flex-start;
+    align-items: flex-start;
 }
 
 .sender-name {
@@ -138,7 +139,8 @@
     border-radius: 20px;
     font-size: 14px;
     line-height: 1.4;
-    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
 .chat-bubble.other {
