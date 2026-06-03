@@ -116,11 +116,13 @@ function Profile() {
         return `${API_BASE_URL}${url}`;
     };
 
-    if (!profile) return <div className="home-page" style={{color: 'white', padding: '40px'}}>Loading Profile...</div>;
-
     return (
         <div className="home-page">
             <Sidebar />
+
+            {!profile ? (
+                <main className="profile-layout"></main>
+            ) : (
 
             <main className="profile-layout">
                 <header className="profile-header">
@@ -161,6 +163,7 @@ function Profile() {
                     ))}
                 </div>
             </main>
+            )}
 
             {isEditing && (
                 <div className="modal-overlay">

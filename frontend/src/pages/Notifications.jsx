@@ -39,14 +39,14 @@ function Notifications() {
 
     }, [user]);
 
-    if (!user)
-        return <h1>Loading User...</h1>;
-
     return (
 
         <div className="home-page">
             <Sidebar />
 
+            {!user ? (
+                <main className="feed"></main>
+            ) : (
             <main className="feed">
                 <h2 style={{ color: 'white', marginBottom: '20px' }}>
                     Notifications
@@ -103,7 +103,7 @@ function Notifications() {
                     )
                 }
             </main>
-
+            )}
         </div>
 
     );
