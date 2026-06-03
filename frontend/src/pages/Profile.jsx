@@ -34,7 +34,6 @@ function Profile() {
     }, [id]);
 
     async function fetchProfileData() {
-        window.dispatchEvent(new Event('show-loader'));
         try {
             let targetUserId = id;
             let isOwnProfile = false;
@@ -64,8 +63,6 @@ function Profile() {
             }
         } catch (error) {
             console.error("Error fetching profile:", error);
-        } finally {
-            window.dispatchEvent(new Event('hide-loader'));
         }
     }
 
